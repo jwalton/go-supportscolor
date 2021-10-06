@@ -112,6 +112,17 @@ func TestDoNotCacheForceColor(t *testing.T) {
 	}
 }
 
+func TestNoColor(t *testing.T) {
+	result := SupportsColor(0, setEnvironment(&testEnvironment{
+		env:           map[string]string{"NO_COLOR": ""},
+		isNotTerminal: true,
+	}))
+
+	if result.Level != None {
+		t.Errorf("Expected %v, got %v", None, result.Level)
+	}
+}
+
 func TestReturnNoneIfNotTty(t *testing.T) {
 	result := SupportsColor(0, setEnvironment(&testEnvironment{isNotTerminal: true}))
 	if result.Level != None {

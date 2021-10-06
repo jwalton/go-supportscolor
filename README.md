@@ -67,4 +67,6 @@ By default, supportscolor checks `os.Args` for the `--color` and `--no-color` CL
 
 For situations where using `--color` is not possible, use the environment variable `FORCE_COLOR=1` (level 1 - 16 colors), `FORCE_COLOR=2` (level 2 - 256 colors), or `FORCE_COLOR=3` (level 3 - true color) to forcefully enable color, or `FORCE_COLOR=0` to forcefully disable. The use of `FORCE_COLOR` overrides all other color support checks.
 
+If `NO_COLOR` is specified and `FORCE_COLOR` is not, then colors will be disabled.
+
 Explicit 256/True color mode can be enabled using the `--color=256` and `--color=16m` flags, respectively.

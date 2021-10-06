@@ -83,7 +83,6 @@ func checkForceColorFlags(env environment) *ColorLevel {
 
 func checkForceColorEnv(env environment) *ColorLevel {
 	forceColor, present := env.LookupEnv("FORCE_COLOR")
-
 	if present {
 		if forceColor == "true" || forceColor == "" {
 			result := Basic
@@ -107,6 +106,11 @@ func checkForceColorEnv(env environment) *ColorLevel {
 			}
 			return &result
 		}
+	}
+
+	if _, isNoColor := env.LookupEnv("NO_COLOR"); isNoColor {
+		result := None
+		return &result
 	}
 
 	return nil
