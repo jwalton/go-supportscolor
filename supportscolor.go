@@ -210,7 +210,7 @@ func supportsColor(config *configuration) ColorLevel {
 	}
 
 	if _, ci := env.LookupEnv("CI"); ci {
-		var ciEnvNames = []string{"TRAVIS", "CIRCLECI", "APPVEYOR", "GITLAB_CI", "GITHUB_ACTIONS", "BUILDKITE", "DRONE"}
+		var ciEnvNames = []string{"TRAVIS", "CIRCLECI", "APPVEYOR", "GITLAB_CI", "GITHUB_ACTIONS", "GITEA_ACTIONS", "BUILDKITE", "DRONE"}
 		for _, ciEnvName := range ciEnvNames {
 			_, exists := env.LookupEnv(ciEnvName)
 			if exists {

@@ -292,7 +292,7 @@ func TestReturnBasicIfTravis(t *testing.T) {
 }
 
 func TestReturnBasicIfCI(t *testing.T) {
-	for _, ci := range []string{"CIRCLECI", "APPVEYOR", "GITLAB_CI", "BUILDKITE", "DRONE"} {
+	for _, ci := range []string{"CIRCLECI", "APPVEYOR", "GITLAB_CI", "GITHUB_ACTIONS", "GITEA_ACTIONS", "BUILDKITE", "DRONE"} {
 		result := SupportsColor(0, setEnvironment(&testEnvironment{
 			env: map[string]string{"CI": "true", ci: "true"},
 		}))
