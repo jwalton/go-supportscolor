@@ -291,6 +291,18 @@ func TestReturnBasicIfTravis(t *testing.T) {
 	}
 }
 
+func TestReturnTrueColorIfActions(t *testing.T) {
+  for _, ci := range []string{"GITHUB_ACTIONS", "GITEA_ACTIONS"} {
+    result := SupportsColor(0, setEnvironment(&testEnvironment{
+      env: map[string]string{"CI": "true", ci: "true"},
+    }))
+
+    if result.Level != Ansi16m {
+      t.Errorf("%v: Expected %v, got %v", ci, Ansi16m, result.Level)
+    }
+  }
+}
+
 func TestReturnBasicIfCI(t *testing.T) {
 	for _, ci := range []string{"CIRCLECI", "APPVEYOR", "GITLAB_CI", "BUILDKITE", "DRONE"} {
 		result := SupportsColor(0, setEnvironment(&testEnvironment{
